@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joyas Artesanales - Catálogo</title>
+<link rel="stylesheet" href="2.css">
+<style>
+/* ===== GALERÍA ===== */
+.producto { cursor: pointer; }
+.producto p, .producto .carrito { display: none; }
+.modal-galeria .info { margin-top: 16px; text-align: center; }
+.modal-galeria .info h3 { margin: 0 0 6px; }
+.modal-galeria .info .precio-modal { font-weight: bold; margin-bottom: 10px; }
+.modal-galeria .info p { color: #666; font-size: 14px; line-height: 1.5; margin: 0 0 14px; }
+.modal-galeria .info .btn-modal { width: 100%; padding: 12px;
+
+ border: 0; border-radius: 6px; background: #8f1a2c; color: #fff;
+ font-weight: bold; cursor: pointer; }
+.modal-galeria { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: none; align-items: center;
+ justify-content: center; padding: 12px; z-index: 1000; }
+.modal-galeria.abierto { display: flex; }
+.modal-galeria .panel { position: relative; background: #fff; border-radius: 10px; padding: 16px;
+ width: min(94vw, 480px); max-height: 94vh; overflow-y: auto; }
+.modal-galeria .principal { display: block; width: 100%; aspect-ratio: 1 / 1;
+ object-fit: contain; background: #ececec; }
+.modal-galeria .miniaturas { display: flex; gap: 12px; margin-top: 14px; overflow-x: auto; padding: 2px; }
+.modal-galeria .miniaturas img { flex: 0 0 auto; width: 72px; height: 72px;
+ object-fit: cover; background: #ececec; cursor: pointer; border: 2px solid transparent; }
+.modal-galeria .miniaturas img.activa { border-color: #222; }
+.modal-galeria .cerrar { position: absolute; top: 4px; right: 10px; z-index: 1; background: none;
+ border: 0; color: #333; font-size: 32px; line-height: 1; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<!-- MENÚ -->
+<header>
+<div class="logo">Joyas Artesanales</div>
+<nav>
+<a href="#inicio">Inicio</a>
+<a href="#catalogo">Catálogo</a>
+<a href="#nosotros">Nosotros</a>
+<a href="#contacto">Contacto</a>
+</nav>
+<button id="btn-carrito">🛒 Carrito (<span id="cantidad">0</span>)</button>
+</header>
+<div id="panel-carrito"></div>
+
+<!-- INICIO -->
+<section id="inicio" class="inicio">
+<h1>Encuentra tu estilo único</h1>
+<p>Explora nuestra colección de joyas artesanales hechas a mano con dedicación y creatividad.</p>
+</section>
+
+<!-- CATÁLOGO -->
+<section id="catalogo" class="catalogo">
+<h2>Catálogo de Joyas Artesanales</h2>
+<div class="productos">
+
+<!-- PRODUCTOS (1-20)-->
+<div class="producto">
+<img src="1.png" alt="Collar de piedras" data-fotos="1.png,1.0.png,1.2.png,1.3.png">
+<h3>COLLAR DE PIEDRAS</h3>
+<p>Collar elaborado a mano con piedras naturales seleccionadas. Su diseño artesanal lo convierte en una pieza única y especial.</p>
+<div class="precio">Precio: S/. 45.00</div></div>
+
+<div class="producto">
+<img src="2.2.png" alt="Pulsera artesanal" data-fotos="2.2.png,2.0.png,2.1.png,2.jpg">
+<h3>PULSERA ARTESANAL</h3>
+<p>Pulsera hecha a mano con finas cuentas decorativas. Su diseño artesanal es ideal para complementar diferentes estilos.</p>
+<div class="precio">Precio: S/. 35.00</div></div>
+
+<div class="producto">
+<img src="3.jpeg" alt="Aretes dorados" data-fotos="3.jpeg,3.1.jpeg,3.2.jpeg,3.3.jpeg">
+<h3>ARETES DORADOS</h3>
+<p>Aretes ligeros con un elegante acabado artesanal. Elaborados cuidadosamente para complementar cualquier ocasión.</p>
+<div class="precio">Precio: S/. 30.00</div></div>
+
+<div class="producto">
+<img src="4.jpeg" alt="Anillo artesanal" data-fotos="4.jpeg,4.0.jpeg,4.1.jpeg,4.2.jpeg">
+<h3>ANILLO ARTESANAL</h3>
+<p>Diseño delicado e ideal para el uso diario. Una pieza artesanal pensada para acompañarte siempre.</p>
+<div class="precio">Precio: S/. 40.00</div></div>
+
+<div class="producto">
+<img src="5.jpeg" alt="Collar de perlas" data-fotos="5.jpeg,5.1.jpeg,5.2.jpeg,5.3.jpeg">
+<h3>COLLAR DE PERLAS</h3>
+<p>Collar elaborado a mano con perlas seleccionadas de brillo natural.</p>
+<div class="precio">Precio: S/. 50.00</div></div>
+
+<div class="producto">
+<img src="6.3.jpg" alt="Pulsera de hilo" data-fotos="6.3.jpg,6.2.jpg,6.jpg,6.1.jpg">
+<h3>PULSERA DE HILO</h3>
+<p>Pulsera tejida a mano con hilos de colores resistentes.</p>
+<div class="precio">Precio: S/. 20.00</div></div>
+
+<div class="producto">
+<img src="7.jpeg" alt="Aretes de perla" data-fotos="7.jpeg,7.1.jpeg,7.2.jpeg,7.3.jpeg">
+<h3>ARETES DE PERLA</h3>
+<p>Aretes elaborados a mano con perlas pequeñas y elegantes.</p>
+<div class="precio">Precio: S/. 25.00</div></div>
+
+<div class="producto">
+<img src="8.jpeg" alt="Anillo de plata" data-fotos="8.jpeg,8.1.jpeg,8.2.jpeg,8.3.jpeg">
+<h3>ANILLO DE PLATA</h3>
+<p>Anillo elaborado a mano con plata fina para uso diario.</p>
+<div class="precio">Precio: S/. 45.00</div></div>
+
+<div class="producto">
+<img src="9.jpeg" alt="Collar dorado" data-fotos="9.jpeg,9.1.jpeg,9.2.jpeg,9.3.jpeg">
+<h3>COLLAR DORADO</h3>
+<p>Collar elaborado a mano con un acabado dorado brillante.</p>
+<div class="precio">Precio: S/. 55.00</div></div>
+
+<div class="producto">
+<img src="10.jpg" alt="Pulsera dorada" data-fotos="10.jpg,10.1.jpg,10.2.jpg,10.3.jpg">
+<h3>PULSERA DORADA</h3>
+<p>Pulsera hecha a mano con detalles dorados ligeros y elegantes.</p>
+<div class="precio">Precio: S/. 38.00</div></div>
+
+<div class="producto">
+<img src="11.webp" alt="Aretes de aro" data-fotos="11.webp,11.2.webp,11.1.webp,11.3.webp">
+<h3>ARETES DE ARO</h3>
+<p>Aretes de aro elaborados a mano con diseño clásico y ligero.</p>
+<div class="precio">Precio: S/. 28.00</div></div>
+
+<div class="producto">
+<img src="12.jpeg" alt="Anillo de piedra" data-fotos="12.jpeg,12.1.jpeg,12.2.jpeg,12.3.jpeg">
+<h3>ANILLO DE PIEDRA</h3>
+<p>Anillo elaborado a mano con piedra natural seleccionada.</p>
+<div class="precio">Precio: S/. 42.00</div></div>
+
+<div class="producto">
+<img src="13.jpeg" alt="Collar de cuentas" data-fotos="13.jpeg,13.1.jpeg,13.2.jpeg,13.3.jpeg">
+<h3>COLLAR DE CUENTAS</h3>
+<p>Collar hecho a mano con cuentas de colores seleccionadas.</p>
+<div class="precio">Precio: S/. 35.00</div></div>
+
+<div class="producto">
+<img src="14.jpeg" alt="Pulsera de piedras" data-fotos="14.jpeg,14.1.jpeg,14.2.jpeg,14.3.jpeg">
+<h3>PULSERA DE PIEDRAS</h3>
+<p>Pulsera elaborada a mano con piedras naturales seleccionadas.</p>
+<div class="precio">Precio: S/. 40.00</div></div>
+
+<div class="producto">
+<img src="15.jpeg" alt="Aretes largos" data-fotos="15.jpeg,15.1.jpeg,15.2.jpeg,15.3.jpeg">
+<h3>ARETES LARGOS</h3>
+<p>Aretes largos elaborados a mano, ideales para ocasiones especiales.</p>
+<div class="precio">Precio: S/. 32.00</div></div>
+
+<div class="producto">
+<img src="16.jpeg" alt="Anillo ajustable" data-fotos="16.jpeg,16.1.jpeg,16.2.jpeg,16.3.jpeg">
+<h3>ANILLO AJUSTABLE</h3>
+<p>Anillo elaborado a mano que se adapta a cualquier dedo.</p>
+<div class="precio">Precio: S/. 30.00</div></div>
+
+<div class="producto">
+<img src="17.jpeg" alt="Collar con dije" data-fotos="17.jpeg,17.1.jpeg,17.2.jpeg,17.3.jpeg">
+<h3>COLLAR CON DIJE</h3>
+<p>Collar elaborado a mano con un dije artesanal único.</p>
+<div class="precio">Precio: S/. 48.00</div></div>
+
+<div class="producto">
+<img src="18.jpeg" alt="Pulsera con dijes" data-fotos="18.jpeg,18.1.jpeg,18.2.jpeg,18.3.jpeg">
+<h3>PULSERA CON DIJES</h3>
+<p>Pulsera hecha a mano con pequeños dijes decorativos.</p>
+<div class="precio">Precio: S/. 36.00</div></div>
+
+<div class="producto">
+<img src="19.jpeg" alt="Aretes de flor" data-fotos="19.jpeg,19.1.jpeg,19.2.jpeg,19.3.jpeg">
+<h3>ARETES DE FLOR</h3>
+<p>Aretes elaborados a mano con delicado diseño floral.</p>
+<div class="precio">Precio: S/. 27.00</div></div>
+
+<div class="producto">
+<img src="20.jpeg" alt="Anillo de cuentas" data-fotos="20.jpeg,20.1.jpeg,20.2.jpeg,20.3.jpeg">
+<h3>ANILLO DE CUENTAS</h3>
+<p>Anillo hecho a mano con finas cuentas decorativas.</p>
+<div class="precio">Precio: S/. 33.00</div></div>
+
+</div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros" class="nosotros">
+<h2>Nosotros</h2>
+<p>Somos un emprendimiento que crea joyas artesanales hechas a mano, con materiales seleccionados y mucho cariño en cada detalle.</p>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contacto">
+<h2>Contacto</h2>
+<p>Escríbenos para hacer tu pedido o resolver tus dudas.</p>
+</section>
+
+<footer>© 2026 Joyas Artesanales</footer>
+
+<!-- GALERÍA EMERGENTE -->
+<div class="modal-galeria" id="modal-galeria">
+    <div class="panel">
+        <button class="cerrar" id="cerrar-galeria" aria-label="Cerrar">&times;</button>
+        <img class="principal" id="foto-principal" alt="">
+        <div class="miniaturas" id="miniaturas"></div>
+        <div class="info">
+            <h3 id="info-nombre"></h3>
+            <div class="precio-modal" id="info-precio"></div>
+            <p id="info-descripcion"></p>
+            <button class="btn-modal" id="info-agregar">Añadir al carrito</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const carrito = [];
+const panel = document.getElementById("panel-carrito");
+
+// Dibuja y actualiza 
+function dibujar() {
+    let total = 0, cantidad = 0;
+    panel.innerHTML = "<h3>Mi carrito</h3>" + (carrito.length ? "" : "<p>Está vacío</p>");
+    carrito.forEach((p, i) => {
+        total += p.precio * p.cant;
+        cantidad += p.cant;
+        panel.innerHTML += `
+        <div class="item-carrito">
+            <b>${p.nombre}</b>
+            <div class="controles">
+                <button data-accion="restar" data-i="${i}">−</button>
+                <span>${p.cant}</span>
+                <button data-accion="sumar" data-i="${i}">+</button>
+                <span class="subtotal">S/. ${(p.precio * p.cant).toFixed(2)}</span>
+                <button data-accion="quitar" data-i="${i}" title="Quitar">🗑</button>
+            </div>
+        </div>`;
+    });
+    if (carrito.length) {
+        panel.innerHTML += `<div class="total-carrito">Total: S/. ${total.toFixed(2)}</div>
+        <button class="vaciar" data-accion="vaciar">Vaciar carrito</button>`;
+    }
+    document.getElementById("cantidad").textContent = cantidad;
+}
+
+// AGREGAR
+function agregar(nombre, precio) {
+    const p = carrito.find(x => x.nombre === nombre);
+    p ? p.cant++ : carrito.push({ nombre, precio, cant: 1 });
+    dibujar();
+}
+
+// Botones del carrito: sumar, restar, quitar y vaciar
+panel.onclick = e => {
+    const accion = e.target.dataset.accion;
+    const i = e.target.dataset.i;
+    if (accion === "sumar") carrito[i].cant++;
+    if (accion === "restar") { carrito[i].cant--; if (carrito[i].cant === 0) carrito.splice(i, 1); }
+    if (accion === "quitar") carrito.splice(i, 1);
+    if (accion === "vaciar") carrito.length = 0;
+    dibujar();
+};
+
+// Mostrar / ocultar el carrito
+document.getElementById("btn-carrito").onclick = () => {
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
+};
+
+// Añadir al carrito
+document.querySelectorAll(".producto").forEach(card => {
+    card.insertAdjacentHTML("beforeend", '<button class="carrito">Añadir al carrito</button>');
+    card.querySelector(".carrito").onclick = e => {
+        agregar(
+            card.querySelector("h3").textContent.trim(),
+            parseFloat(card.querySelector(".precio").textContent.match(/\d+(\.\d+)?/)[0])
+        );
+        panel.style.display = "block"; // abre el carrito al agregar
+        e.target.textContent = "¡Añadido!";
+        setTimeout(() => e.target.textContent = "Añadir al carrito", 1000);
+    };
+});
+
+// ===== GALERÍA =====
+const modalGaleria = document.getElementById("modal-galeria");
+const fotoPrincipal = document.getElementById("foto-principal");
+const contMiniaturas = document.getElementById("miniaturas");
+
+function mostrarFoto(i) {
+    const minis = [...contMiniaturas.children];
+    if (!minis[i]) return;
+    fotoPrincipal.src = minis[i].src;
+    minis.forEach((m, j) => m.classList.toggle("activa", j === i));
+}
+
+function abrirGaleria(card) {
+    const img = card.querySelector("img");
+    document.getElementById("info-nombre").textContent = card.querySelector("h3").textContent;
+    document.getElementById("info-precio").textContent = card.querySelector(".precio").textContent;
+    document.getElementById("info-descripcion").textContent = card.querySelector("p").textContent;
+    document.getElementById("info-agregar").onclick = () => {
+        card.querySelector(".carrito").click(); // usa el mismo botón de la tarjeta
+        cerrarGaleria();
+    };
+    const fotos = (img.dataset.fotos || img.getAttribute("src")).split(",").map(f => f.trim());
+    contMiniaturas.innerHTML = "";
+    fotos.forEach((src, i) => {
+        const m = document.createElement("img");
+        m.src = src;
+        m.alt = img.alt;
+        m.onclick = () => mostrarFoto([...contMiniaturas.children].indexOf(m));
+        m.onerror = () => { // si la foto no existe, se quita
+            m.remove();
+            if (!fotoPrincipal.getAttribute("src") || fotoPrincipal.getAttribute("src") === src) mostrarFoto(0);
+        };
+        contMiniaturas.appendChild(m);
+    });
+    fotoPrincipal.alt = img.alt;
+    mostrarFoto(0);
+    modalGaleria.classList.add("abierto");
+}
+
+function cerrarGaleria() { modalGaleria.classList.remove("abierto"); }
+
+document.querySelectorAll(".producto").forEach(card => {
+    card.onclick = () => abrirGaleria(card);
+});
+document.getElementById("cerrar-galeria").onclick = cerrarGaleria;
+modalGaleria.onclick = e => { if (e.target === modalGaleria) cerrarGaleria(); };
+document.addEventListener("keydown", e => { if (e.key === "Escape") cerrarGaleria(); });
+
+dibujar();
+</script>
+</body>
+</html>
